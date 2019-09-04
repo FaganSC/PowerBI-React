@@ -13,6 +13,7 @@ Include
 
 ```javascript
 import { Report } from 'react-powerbi-client';
+import * as pbi from 'powerbi-client';
 ```
 
 Render component
@@ -32,7 +33,7 @@ Render component
 ```javascript
 import React, { Component } from 'react';
 import { Report } from 'react-powerbi-client';
-
+const models = pbi.models;
 export default class extends Component {
   onEmbedded(embed) {
     console.log(`Report embedded: `, embed, this);
@@ -50,6 +51,8 @@ export default class extends Component {
           filterPaneEnabled={true}
           navContentPaneEnabled={false}
           onEmbedded={this.onEmbedded}
+          tokenType={models.TokenType.Embed}
+          permissions={models.Permissions.All}
         />
       </div>
     );
